@@ -29,14 +29,29 @@
 @synthesize countdownLabel;
 
 int countdownNumber;
+int timerNumber;
 int difficulty;
+
+NSString *uid;
+NSString *correctAnswer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     countdownNumber = 3;
+    timerNumber = 60;
     difficulty = 1;
+    correctAnswer = @"";
+    
+    //centering text for multiple choice buttons
+    optionAButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    optionBButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    optionCButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    optionDButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+
+    //getting our uid using user function
+    uid = [Teaser getCurrentUserUID];
     
     //initiating our countdown sequence
     
@@ -45,6 +60,8 @@ int difficulty;
 
 -(void)initiateGame {
     //initiating the actual game
+    
+    correctAnswer = @"";
     
     //hiding/unhiding necessary subviews
     
@@ -62,6 +79,98 @@ int difficulty;
     self.countdownLabel.hidden = YES;
     
     //getting a problem from our database using our wrapper
+    
+    //our getProblemIDForDifficulty function takes the difficulty paramater as a string so:
+    NSString *difficultyAsAString = [NSString stringWithFormat:@"%d",difficulty];
+    
+    [Teaser getProblemIDForDifficulty:uid withDifficulty:difficultyAsAString withCompletion:^(NSString *problem_uid){
+        //now that we have our problem_uid, we need to get the problem_type
+        [Teaser getProblemType:uid withProblemID:problem_uid withCompletion:^(NSString *problemType){
+            //we have our problem type, now we need to hide our unhide certain views depending on the type of problem
+            if ([problemType isEqualToString:@"image_text_options"]){
+                inputAnswerTextField.hidden = YES;
+                submitAnswerButton.hidden = YES;
+                topTextView.hidden = YES;
+            }
+            else if ([problemType isEqualToString:@"image_text_choice"]){
+                optionAButton.hidden = YES;
+                optionBButton.hidden = YES;
+                optionCButton.hidden = YES;
+                optionDButton.hidden = YES;
+                topTextView.hidden = YES;
+            }
+            else if ([problemType isEqualToString:@"text_text_options"]){
+                inputAnswerTextField.hidden = YES;
+                submitAnswerButton.hidden = YES;
+                topImageView.hidden = YES;
+            }
+            else {
+                optionAButton.hidden = YES;
+                optionBButton.hidden = YES;
+                optionCButton.hidden = YES;
+                optionDButton.hidden = YES;
+                topImageView.hidden = YES;
+            }
+            
+            //getting the correct answer
+            
+            [Teaser getProblemCorrectAnswer:uid withProblemID:problem_uid withCompletion:^(NSString *correctAns){
+                //setting correct answer
+                correctAnswer = correctAns;
+            }];
+            
+            //getting the question text
+            [Teaser getProblemQuestionText:uid withProblemID:problem_uid withCompletion:^(NSString *questionText){
+                //setting bottomTextView text
+                self.bottomTextView.text = questionText;
+
+            }];
+            
+            //now we have to populate the views
+            
+            if ([problemType isEqualToString:@"image_text_options"] || [problemType isEqualToString:@"image_text_choice"]){
+                //getting the image -> STILL NEEDS TO BE DONE!!! (first need to update the REST API and then the wrapper before adding it here)
+                
+            }
+            
+            else {
+                //this is a question that has a header text field, so we now get the header text value using our wrapper
+                
+                [Teaser getProblemHeaderText:uid withProblemID:problem_uid withCompletion:^(NSString *headerText){
+                    //setting the header text
+                    self.topTextView.text = headerText;
+                }];
+            }
+            
+            if ([problemType containsString:@"options"]){
+                //general multiple choice question
+                
+                //setting multiple choice button options
+                [Teaser getProblemOptionA:uid withProblemID:problem_uid withCompletion:^(NSString *optionA){
+                    self.optionAButton.titleLabel.text = optionA;
+                }];
+                
+                [Teaser getProblemOptionB:uid withProblemID:problem_uid withCompletion:^(NSString *optionB){
+                    self.optionBButton.titleLabel.text = optionB;
+                }];
+                
+                [Teaser getProblemOptionC:uid withProblemID:problem_uid withCompletion:^(NSString *optionC){
+                    self.optionCButton.titleLabel.text = optionC;
+                }];
+                
+                [Teaser getProblemOptionD:uid withProblemID:problem_uid withCompletion:^(NSString *optionD){
+                    self.optionDButton.titleLabel.text = optionD;
+                }];
+        
+            }
+            
+            //now we would like to initiate our timer that counts down how much time the user has (found in upper right corner)
+            
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCountDown:) userInfo:nil repeats:YES];
+            
+            
+        }];
+    }];
     
     
 
@@ -99,6 +208,20 @@ int difficulty;
     if (countdownNumber <= 0) {
         [timer invalidate];
         countdownNumber = 3; //setting up the countdown for the next time it is needed
+        //countdown has completed
+        [self initiateGame];
+        
+    }
+}
+
+- (void)timeCountDown:(NSTimer *)timer
+{
+    timerNumber--;
+    //updating label
+    self.timeIndicatorLabel.text = [NSString stringWithFormat:@"%ds",timerNumber];
+    if (timerNumber <= 0) {
+        [timer invalidate];
+        timerNumber = 60; //setting up the countdown for the next time it is needed
         //countdown has completed
         [self initiateGame];
         

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Teaser.h"
 
 @interface PlayForFunGameViewController : UIViewController
 
