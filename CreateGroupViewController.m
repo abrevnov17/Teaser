@@ -72,8 +72,10 @@
     }
 }
 
+
 -(IBAction)addFriends:(id)sender{
     //optional
+
 }
 
 - (void)hideKeyboard {

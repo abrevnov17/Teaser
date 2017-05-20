@@ -15,6 +15,8 @@
 @implementation FriendsListViewController
 
 @synthesize uid;
+@synthesize doneButton;
+@synthesize delegate;
 
 NSMutableArray *friends;
 NSMutableArray *cells;
@@ -34,8 +36,17 @@ NSMutableArray *friendsToAdd;
     //loading our initial data
     
     [self loadData];
+    
+    doneButton.target = self;
+    doneButton.action = @selector(donePressed:);
 
 }
+
+-(IBAction)donePressed:(UIBarButtonItem *)sender{
+    //done button pressed
+
+}
+
 
 -(void)loadData{
     //reloading our data
@@ -54,12 +65,6 @@ NSMutableArray *friendsToAdd;
         }
         
     }];
-}
-
--(IBAction)donePressed:(id)sender{
-    //done button pressed, we begin the segue
-    
-    [self performSegueWithIdentifier:@"donePressed" sender:self];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,11 +104,13 @@ NSMutableArray *friendsToAdd;
     [cells addObject:cell];
     
     // Set the data for this cell:
-    cell.textLabel.text = friends[indexPath.row];
     
-
-    //cell.textLabel.text = [dataArray objectAtIndex:indexPath.row];
-    //cell.detailTextLabel.text = @"More text";
+    //getting the name
+    [Teaser getUsername:friends[indexPath.row] withCompletion:^(NSString *name){
+        //setting the cell label to be the username of the friend
+        cell.textLabel.text = name;
+    }];
+    
     
     cell.imageView.image = [UIImage imageNamed:@"uncheckedBox.png"];
     
@@ -146,11 +153,11 @@ NSMutableArray *friendsToAdd;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if([segue.identifier isEqualToString:@"donePressed"]){
-        //passing in our selected friends
-        CreateGroupViewController *controller = (CreateGroupViewController *)segue.destinationViewController;
-        controller.friendsAdded = friendsToAdd;
-    }
+    //passing in our selected friends
+    NSLog(@"success part 2");
+    CreateGroupViewController *controller = (CreateGroupViewController *)segue.destinationViewController;
+    controller.friendsAdded = friendsToAdd;
+
 }
 
 

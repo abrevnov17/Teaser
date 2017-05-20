@@ -544,6 +544,208 @@
 
 }
 
+//problems
+
++(void)getProblemIDForDifficulty:(NSString*)uid withDifficulty:(NSString*)difficulty withCompletion:(completionString)problemID{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:difficulty forKey:@"difficulty"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemIDForDifficulty.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           problemID(newStr);
+           
+       }];
+
+}
+
++(void)getProblemType:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)problemType{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemType.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           problemType(newStr);
+           
+       }];
+}
+
++(void)getProblemHeaderText:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)headerText{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemHeaderText.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           headerText(newStr);
+           
+       }];
+}
+
++(void)getProblemQuestionText:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)questionText{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemQuestionText.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           questionText(newStr);
+           
+       }];
+}
+
++(void)getProblemCorrectAnswer:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)correctAnswer{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemCorrectAnswer.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           correctAnswer(newStr);
+           
+       }];
+}
+
++(void)getProblemOptionA:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionA{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getOptionA.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           optionA(newStr);
+           
+       }];
+}
+
++(void)getProblemOptionB:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionB{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getOptionB.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           optionB(newStr);
+           
+       }];
+    
+}
+
++(void)getProblemOptionC:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionC{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getOptionc.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           optionC(newStr);
+           
+       }];
+}
+
++(void)getProblemOptionD:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionD{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getOptionD.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           optionD(newStr);
+           
+       }];
+}
+
 /* USER FUNCTIONS */
 
 +(BOOL)isUserLoggedIn{

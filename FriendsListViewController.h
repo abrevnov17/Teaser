@@ -13,5 +13,8 @@
 @interface FriendsListViewController : UITableViewController
 
 @property (nonatomic,retain)NSString *uid;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property(nonatomic,assign)id delegate;
+
 
 @end

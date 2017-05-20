@@ -176,6 +176,18 @@ NSMutableArray *friendRequestIDS;
 -(IBAction)segmentControllerValueChanged:(id)sender{
     //segement value changed
     
+    //immediately want to clear the table
+    [friendIDS removeAllObjects];
+    [friendRequestIDS removeAllObjects];
+    [groupRequestIDS removeAllObjects];
+    [groupIDS removeAllObjects];
+    
+    [self.topTable reloadData];
+    [self.bottomTable reloadData];
+    
+    //now we actually switch what we are displaying to the other page's content
+    
+    
     NSInteger index = segmentedController.selectedSegmentIndex;
     
     if (index == 0){

@@ -51,6 +51,17 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)login:(NSString*)username withPassword:(NSString *)password withCompletion:(completionString)success;
 +(void)createAccount:(NSString*)username withEmail:(NSString *)email withPassword:(NSString *)password withCompletion:(completionString)success;
 
+//problems
++(void)getProblemIDForDifficulty:(NSString*)uid withDifficulty:(NSString*)difficulty withCompletion:(completionString)problemID;
++(void)getProblemType:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)problemType;
++(void)getProblemHeaderText:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)headerText;
++(void)getProblemQuestionText:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)questionText;
++(void)getProblemCorrectAnswer:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)correctAnswer;
++(void)getProblemOptionA:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionA;
++(void)getProblemOptionB:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionB;
++(void)getProblemOptionC:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionC;
++(void)getProblemOptionD:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionD;
+
 //general functions
 
 +(void)getLastUID:(completionString)uid;

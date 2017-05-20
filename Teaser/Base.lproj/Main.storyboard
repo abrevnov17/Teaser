@@ -10,6 +10,9 @@
         <array key="Raleway-Bold.ttf">
             <string>Raleway-Bold</string>
         </array>
+        <array key="Raleway-ExtraBold.ttf">
+            <string>Raleway-ExtraBold</string>
+        </array>
         <array key="Raleway-Regular.ttf">
             <string>Raleway-Regular</string>
         </array>
@@ -44,6 +47,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="RYs-p0-Wvy" kind="show" id="e0N-BF-mqf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwx-AW-g6M">
                                 <frame key="frameInset" minX="91" minY="402" width="193" height="44"/>
@@ -98,20 +104,20 @@
             </objects>
             <point key="canvasLocation" x="1376.8" y="1193.2533733133434"/>
         </scene>
-        <!--Type #1-->
+        <!--Play for Fun Game View Controller-->
         <scene sceneID="2Zh-Ep-GT5">
             <objects>
-                <viewController storyboardIdentifier="type1" title="Type #1" id="RYs-p0-Wvy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Play for Fun" title="Play for Fun Game View Controller" id="RYs-p0-Wvy" customClass="PlayForFunGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d3E-T0-v1Q"/>
                         <viewControllerLayoutGuide type="bottom" id="tyN-Kz-j6C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sKH-g1-G01">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nu1-8I-jnV">
-                                <frame key="frameInset" minX="84" minY="498" width="90" height="44"/>
+                                <frame key="frameInset" minX="84" minY="435" width="90" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
@@ -126,7 +132,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYZ-kd-9zY">
-                                <frame key="frameInset" minX="201" minY="498" width="90" height="44"/>
+                                <frame key="frameInset" minX="201" minY="435" width="90" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
@@ -141,7 +147,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4OP-0c-QGS">
-                                <frame key="frameInset" minX="84" minY="569" width="90" height="44"/>
+                                <frame key="frameInset" minX="84" minY="506" width="90" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
@@ -156,7 +162,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-U4-FOG">
-                                <frame key="frameInset" minX="201" minY="569" width="90" height="44"/>
+                                <frame key="frameInset" minX="201" minY="506" width="90" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
@@ -171,7 +177,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7q-Z7-WLQ">
-                                <frame key="frameInset" minX="67" minY="82" width="240" height="189"/>
+                                <frame key="frameInset" minX="67" minY="68" width="240" height="189"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXP-FJ-1XV">
@@ -182,20 +188,70 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AVo-ak-iP1">
-                                <frame key="frameInset" minX="67" minY="298" width="240" height="128"/>
+                                <frame key="frameInset" minX="67" minY="276" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MAz-0J-uwS">
+                                <frame key="frameInset" minX="67" minY="88" width="240" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVr-eY-emC">
+                                <frame key="frameInset" minX="139" minY="435" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GC-ez-Cmv">
+                                <frame key="frameInset" minX="142" minY="506" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6i-6R-DtB">
+                                <frame key="frameInset" minY="232" width="375" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Raleway-ExtraBold" family="Raleway" pointSize="85"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882" green="0.52549019610000003" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextView" destination="AVo-ak-iP1" id="j6h-Xh-E2i"/>
+                        <outlet property="countdownLabel" destination="A6i-6R-DtB" id="qYE-y2-Kl1"/>
+                        <outlet property="inputAnswerTextField" destination="aVr-eY-emC" id="egX-NU-Zzv"/>
+                        <outlet property="optionAButton" destination="nu1-8I-jnV" id="2pk-KG-alo"/>
+                        <outlet property="optionBButton" destination="CYZ-kd-9zY" id="TIJ-5T-fZk"/>
+                        <outlet property="optionCButton" destination="4OP-0c-QGS" id="7UV-Hf-eG3"/>
+                        <outlet property="optionDButton" destination="iMJ-U4-FOG" id="NeZ-NJ-XjY"/>
+                        <outlet property="submitAnswerButton" destination="7GC-ez-Cmv" id="fw7-QO-1EZ"/>
+                        <outlet property="timeIndicatorLabel" destination="AXP-FJ-1XV" id="8k2-do-fRK"/>
+                        <outlet property="topImageView" destination="D7q-Z7-WLQ" id="yHA-yn-Sc7"/>
+                        <outlet property="topTextView" destination="MAz-0J-uwS" id="HYe-6A-3qf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gp7-Fg-xAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3017" y="49"/>
+            <point key="canvasLocation" x="2392.8000000000002" y="684.10794602698661"/>
         </scene>
         <!--Type #2-->
         <scene sceneID="xZt-qX-AzC">
@@ -602,7 +658,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1eh-KT-reK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W5a-ro-LVp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a Group." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYO-nH-yYU">
@@ -659,7 +715,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addFriends:" destination="tqe-qQ-D0F" eventType="touchUpInside" id="q6m-C4-p5a"/>
-                                    <segue destination="RIK-d1-RSh" kind="show" id="OLR-LT-09y"/>
+                                    <segue destination="RIK-d1-RSh" kind="show" id="sii-aL-1Wx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -672,18 +728,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16L-Ui-3pF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3866" y="1384"/>
+            <point key="canvasLocation" x="3820" y="1384"/>
         </scene>
         <!--Friends-->
         <scene sceneID="kVq-l4-7eW">
             <objects>
                 <tableViewController storyboardIdentifier="myfriends" title="Friends" id="RIK-d1-RSh" customClass="FriendsListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XEs-7W-RBW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3j5-Sw-13d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCells" id="3j5-Sw-13d">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3j5-Sw-13d" id="mts-Bu-gu6">
@@ -700,12 +756,12 @@
                     <navigationItem key="navigationItem" title="Friends" id="vtp-2U-cHT">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="sgg-5r-Va8">
                             <connections>
-                                <action selector="donePressed:" destination="d0j-TM-kxG" id="lGY-2Q-sqq"/>
+                                <action selector="donePressed:" destination="d0j-TM-kxG" id="y6c-Vc-MXB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="tqe-qQ-D0F" kind="show" identifier="donePressed" id="Gpy-X4-JXD"/>
+                        <outlet property="doneButton" destination="sgg-5r-Va8" id="VnD-fD-qAj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0j-TM-kxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -816,6 +872,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="UZ5-ug-WbL"/>
-        <segue reference="Gpy-X4-JXD"/>
     </inferredMetricsTieBreakers>
 </document>
