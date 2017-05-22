@@ -22,5 +22,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *submitAnswerButton;
 @property (strong, nonatomic) IBOutlet UILabel *timeIndicatorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (strong, nonatomic) IBOutlet UILabel *difficultyLabel;
+
+//correct answer property
+
+@property (strong, nonatomic) NSString *correctAnswer;
+
+-(IBAction)optionAPressed:(id)sender;
+-(IBAction)optionBPressed:(id)sender;
+-(IBAction)optionCPressed:(id)sender;
+-(IBAction)optionDPressed:(id)sender;
 
 @end
