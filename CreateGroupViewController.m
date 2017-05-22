@@ -7,8 +7,9 @@
 //
 
 #import "CreateGroupViewController.h"
+#import "FriendsListViewController.h"
 
-@interface CreateGroupViewController ()
+@interface CreateGroupViewController () <FriendsListViewControllerDelegate>
 
 @end
 
@@ -33,6 +34,8 @@
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
 }
+
+
 
 -(IBAction)submit:(id)sender{
     //submit button pressed
@@ -75,7 +78,15 @@
 
 -(IBAction)addFriends:(id)sender{
     //optional
-
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    FriendsListViewController *friendsController = (FriendsListViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"myFriends"];
+    //setting our delegate
+    friendsController.delegate = self;
+    [self.navigationController pushViewController:friendsController animated:YES];
+    
 }
 
 - (void)hideKeyboard {
@@ -84,9 +95,16 @@
     [self.view endEditing:YES];
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateFriendsToAdd:(FriendsListViewController *)controller withFriendsToAdd:(NSMutableArray *)friendsToAdd{
+        //this is the function called using our protocol
+        friendsAdded = friendsToAdd;
 }
 
 /*

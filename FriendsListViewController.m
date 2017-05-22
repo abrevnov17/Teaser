@@ -44,6 +44,12 @@ NSMutableArray *friendsToAdd;
 
 -(IBAction)donePressed:(UIBarButtonItem *)sender{
     //done button pressed
+    
+    //using our delegate to communicate back to the previous view controller
+    [self.delegate updateFriendsToAdd:self withFriendsToAdd:friendsToAdd];
+    
+    //popping the navigation view controller -> our transition
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 

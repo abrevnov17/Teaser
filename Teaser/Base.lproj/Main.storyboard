@@ -741,7 +741,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addFriends:" destination="tqe-qQ-D0F" eventType="touchUpInside" id="q6m-C4-p5a"/>
-                                    <segue destination="RIK-d1-RSh" kind="show" id="sii-aL-1Wx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -761,7 +760,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="myfriends" title="Friends" id="RIK-d1-RSh" customClass="FriendsListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XEs-7W-RBW">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -769,7 +768,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3j5-Sw-13d" id="mts-Bu-gu6">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
