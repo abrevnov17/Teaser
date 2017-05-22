@@ -368,6 +368,48 @@
        }];
 }
 
++(void)declineGroupRequest:(NSString*)requestUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:requestUID forKey:@"request_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Group%20Requests/declineGroupRequest.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           success(newStr);
+           
+       }];
+}
++(void)acceptGroupRequest:(NSString*)uid withRequestUID:(NSString*)requestUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:requestUID forKey:@"request_uid"];
+    [data setObject:uid forKey:@"uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Group%20Requests/acceptGroupRequest.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           success(newStr);
+           
+       }];
+}
+
 //friends
 +(void)aggregateFriends:(NSString*)uid withCompletion:(completionNSMutableArray)friends{
     //the mutable array we return inside the completion block
@@ -478,6 +520,49 @@
            
        }];
 
+}
+
++(void)declineFriendRequest:(NSString*)requestUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:requestUID forKey:@"request_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Friend%20Requests/declineFriendRequest.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           success(newStr);
+           
+       }];
+
+}
++(void)acceptFriendRequest:(NSString*)uid withRequestUID:(NSString*)requestUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:requestUID forKey:@"request_uid"];
+    [data setObject:uid forKey:@"uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Friend%20Requests/acceptFriendRequest.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           success(newStr);
+           
+       }];
 }
 
 //authentication

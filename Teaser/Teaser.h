@@ -38,6 +38,8 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid;
 +(void)getRequestingGroupUID:(NSString*)requestUID withCompletion:(completionString)uid;
 +(void)aggregateGroupRequests:(NSString*)uid withCompletion:(completionNSMutableArray)requests;
++(void)declineGroupRequest:(NSString*)requestUID withCompletion:(completionString)success;
++(void)acceptGroupRequest:(NSString*)uid withRequestUID:(NSString*)requestUID withCompletion:(completionString)success;
 
 //friends
 +(void)aggregateFriends:(NSString*)uid withCompletion:(completionNSMutableArray)friends;
@@ -46,6 +48,8 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 //friend requests
 +(void)aggregateFriendRequests:(NSString*)uid withCompletion:(completionNSMutableArray)requests;
 +(void)getRequestingFriendUserUID:(NSString*)requestUID withCompletion:(completionString)uid;
++(void)declineFriendRequest:(NSString*)requestUID withCompletion:(completionString)success;
++(void)acceptFriendRequest:(NSString*)uid withRequestUID:(NSString*)requestUID withCompletion:(completionString)success;
 
 //authentication
 +(void)login:(NSString*)username withPassword:(NSString *)password withCompletion:(completionString)success;

@@ -253,8 +253,10 @@ NSMutableArray *friendRequestIDS;
             [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [playButton setTitle:@"Play" forState:UIControlStateNormal];
             playButton.layer.cornerRadius = 5;
-            playButton.tag = TO_DELETE;
+            playButton.tag = indexPath.row;
+            [playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:playButton];
+
             
             //below we add the number of members label to the cell
             UILabel *numberOfMembers = [[UILabel alloc] init];
@@ -291,7 +293,8 @@ NSMutableArray *friendRequestIDS;
                 [declineButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [declineButton setTitle:@"decline" forState:UIControlStateNormal];
                 declineButton.layer.cornerRadius = 5;
-                declineButton.tag = TO_DELETE;
+                declineButton.tag = indexPath.row;
+                [declineButton addTarget:self action:@selector(rejectButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:declineButton];
                 
                 //below we add the accept button to the cell
@@ -301,8 +304,9 @@ NSMutableArray *friendRequestIDS;
                 acceptButton.backgroundColor = [UIColor colorWithRed:112/255.0 green:196/255.0 blue:127/255.0 alpha:1];
                 [acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [acceptButton setTitle:@"decline" forState:UIControlStateNormal];
-                acceptButton.tag = TO_DELETE;
+                acceptButton.tag = indexPath.row;
                 acceptButton.layer.cornerRadius = 5;
+                [declineButton addTarget:self action:@selector(acceptButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:acceptButton];
   
             }];
@@ -349,7 +353,8 @@ NSMutableArray *friendRequestIDS;
                 [declineButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [declineButton setTitle:@"decline" forState:UIControlStateNormal];
                 declineButton.layer.cornerRadius = 5;
-                declineButton.tag = TO_DELETE;
+                declineButton.tag = indexPath.row;
+                [declineButton addTarget:self action:@selector(rejectButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:declineButton];
                 
                 //below we add the accept button to the cell
@@ -359,8 +364,9 @@ NSMutableArray *friendRequestIDS;
                 acceptButton.backgroundColor = [UIColor colorWithRed:112/255.0 green:196/255.0 blue:127/255.0 alpha:1];
                 [acceptButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 [acceptButton setTitle:@"decline" forState:UIControlStateNormal];
-                acceptButton.tag = TO_DELETE;
+                acceptButton.tag = indexPath.row;
                 acceptButton.layer.cornerRadius = 5;
+                [declineButton addTarget:self action:@selector(acceptButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cell addSubview:acceptButton];
                 
             }];
@@ -422,6 +428,71 @@ NSMutableArray *friendRequestIDS;
     
     return 0;
 
+}
+
+-(void)playButtonPressed:(UIButton *)sender
+{
+    //play button was pressed
+    
+    //we get the index of the button that was clicked (we need to know what row it was)
+    NSInteger index = sender.tag;
+    
+}
+
+-(void)rejectButtonPressed:(UIButton *)sender
+{
+    //we get the index of the button that was clicked (we need to know what row it was)
+    NSInteger index = sender.tag;
+    
+    if (segmentedController.selectedSegmentIndex == 0){
+        //group request
+        
+        [Teaser declineGroupRequest:[groupRequestIDS objectAtIndex:index] withCompletion:^(NSString *success){
+            //declined the group request
+            
+            //reloading our tableview data
+            
+            [self loadData];
+        }];
+    }
+    else {
+        //friend request
+        [Teaser declineFriendRequest:[friendRequestIDS objectAtIndex:index] withCompletion:^(NSString *success){
+            //declined the friend request
+            
+            //reloading our tableview data
+            
+            [self loadData];
+        }];
+    }
+    
+}
+
+-(void)acceptButtonPressed:(UIButton *)sender
+{
+    //we get the index of the button that was clicked (we need to know what row it was)
+    NSInteger index = sender.tag;
+    
+    if (segmentedController.selectedSegmentIndex == 0){
+        //group request
+        [Teaser acceptGroupRequest:uid withRequestUID:[groupRequestIDS objectAtIndex:index] withCompletion:^(NSString *success){
+            //accepted the group request
+            
+            //reloading our tableview data
+            
+            [self loadData];
+        }];
+    }
+    else {
+        //friend request
+        [Teaser acceptFriendRequest:uid withRequestUID:[friendRequestIDS objectAtIndex:index] withCompletion:^(NSString *success){
+            //accepted the friend request
+            
+            //reloading our tableview data
+            
+            [self loadData];
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
