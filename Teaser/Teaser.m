@@ -291,6 +291,103 @@
 
 }
 
++(void)getGroupMemberLastAnsweredTimestamp:(NSString *)membershipUID withCompletion:(completionString)timestamp{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:membershipUID forKey:@"membership_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/getGroupMemberLastAnsweredTimestamp.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           timestamp(newStr);
+           
+       }];
+    
+}
+
++(void)getGroupMembershipIDFromGroupUIDAndMemberUID:(NSString *)uid withGroupUID:(NSString *)groupUID withCompletion:(completionString)membershipUID{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:uid forKey:@"uid"];
+    [data setObject:groupUID forKey:@"group_uid"];
+
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/getGroupMembershipIDFromGroupUIDAndMemberUID.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           membershipUID(newStr);
+           
+       }];
+}
+
++(void)getGroupCurrentProblemUID:(NSString*)groupUID withCompletion:(completionString)problemUID{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/getGroupCurrentProblemUID.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           problemUID(newStr);
+           
+       }];
+}
+
++(void)getGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)groupProblemTimestamp{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/getGroupCurrentProblemTimestamp.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           groupProblemTimestamp(newStr);
+           
+       }];
+}
+
 //group requests
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid{
     //interacting with our REST API

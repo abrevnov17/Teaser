@@ -33,6 +33,10 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)aggregateGroupMembers:(NSString*)groupUID withCompletion:(completionNSMutableArray)members;
 +(void)createGroup:(NSString*)groupName withNumberOfMembers:(NSString *)num withDescription:(NSString *)description withAdminUID:(NSString *)adminUID withMembers:(NSMutableArray *)members withCompletion:(completionString)success;
 +(void)createGroupMember:(NSString*)groupUID withMemberUID:(NSString *)memberUID withCompletion:(completionString)success;
++(void)getGroupMemberLastAnsweredTimestamp:(NSString *)membershipUID withCompletion:(completionString)timestamp;
++(void)getGroupMembershipIDFromGroupUIDAndMemberUID:(NSString *)uid withGroupUID:(NSString *)groupUID withCompletion:(completionString)membershipUID;
++(void)getGroupCurrentProblemUID:(NSString*)groupUID withCompletion:(completionString)problemUID;
++(void)getGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)groupProblemTimestamp;
 
 //group requests
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid;

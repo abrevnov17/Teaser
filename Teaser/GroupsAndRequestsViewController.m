@@ -437,6 +437,23 @@ NSMutableArray *friendRequestIDS;
     //we get the index of the button that was clicked (we need to know what row it was)
     NSInteger index = sender.tag;
     
+    //here we need to check when the last
+    
+    [Teaser getGroupMembershipIDFromGroupUIDAndMemberUID:uid withGroupUID:[groupIDS objectAtIndex:index] withCompletion:^(NSString *membershipUID){
+        //now we have our membershipUID, which we can use to get the timestamp of the last time the user answered a problem in that given group
+        
+        [Teaser getGroupMemberLastAnsweredTimestamp:membershipUID withCompletion:^(NSString *timestamp){
+            //now we have our timestamp, which we need to compare to the timestamp of the current problem to make sure that the user has not answered a problem after the problem's timestamp was set (i.e. make sure they haven't already answered the group's current problem)
+            
+            
+        }];
+        
+        
+        
+    }];
+    
+    
+    
 }
 
 -(void)rejectButtonPressed:(UIButton *)sender

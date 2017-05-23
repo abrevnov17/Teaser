@@ -86,7 +86,7 @@
     //setting our delegate
     friendsController.delegate = self;
     [self.navigationController pushViewController:friendsController animated:YES];
-    
+
 }
 
 - (void)hideKeyboard {
