@@ -1,15 +1,15 @@
 //
-//  PlayForFunGameViewController.h
+//  MultiplayerGameViewController.h
 //  Teaser
 //
-//  Created by Anatoly Brevnov on 5/19/17.
+//  Created by Anatoly Brevnov on 5/23/17.
 //  Copyright © 2017 Anatoly Brevnov. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Teaser.h"
 
-@interface PlayForFunGameViewController : UIViewController
+@interface MultiplayerGameViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *topImageView;
 @property (strong, nonatomic) IBOutlet UITextView *topTextView;
@@ -23,6 +23,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeIndicatorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *countdownLabel;
 @property (strong, nonatomic) IBOutlet UILabel *difficultyLabel;
+
+//groupid property (needs to be passed in)
+@property (strong,nonatomic) NSString *groupUID;
 
 //correct answer property
 @property (strong, nonatomic) NSString *correctAnswer;

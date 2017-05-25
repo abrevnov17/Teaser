@@ -279,6 +279,181 @@
             </objects>
             <point key="canvasLocation" x="2392.8000000000002" y="684.10794602698661"/>
         </scene>
+        <!--Multiplayer Game View Controller-->
+        <scene sceneID="PB8-VB-8vP">
+            <objects>
+                <viewController storyboardIdentifier="multiplayer" title="Multiplayer Game View Controller" id="6VL-9K-B4u" customClass="MultiplayerGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XcU-q7-hYJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tG0-NE-HW5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TIA-OY-cv0">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xio-Pz-mPk">
+                                <frame key="frameInset" minX="84" minY="435" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Option A">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="optionAPressed:" destination="Plw-hX-79S" eventType="touchUpInside" id="Uda-lS-Bn6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uV3-5U-hIc">
+                                <frame key="frameInset" minX="201" minY="435" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Option B">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="optionBPressed:" destination="Plw-hX-79S" eventType="touchUpInside" id="XFe-11-X63"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmH-4z-qHG">
+                                <frame key="frameInset" minX="84" minY="506" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Option C">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="optionCPressed:" destination="6VL-9K-B4u" eventType="touchUpInside" id="45v-ZR-sKv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFC-4l-tUi">
+                                <frame key="frameInset" minX="201" minY="506" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Option D">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="optionDPressed:" destination="Plw-hX-79S" eventType="touchUpInside" id="6rd-Vq-5a0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbO-2H-xDI">
+                                <frame key="frameInset" minX="67" minY="79" width="240" height="189"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="60s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3n-KK-9xR">
+                                <frame key="frameInset" minX="317" minY="8" width="42" height="23"/>
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RIG-RJ-zfC">
+                                <frame key="frameInset" minX="67" minY="276" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-jb-5sT">
+                                <frame key="frameInset" minX="139" minY="435" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17x-cR-ICr">
+                                <frame key="frameInset" minX="142" minY="506" width="90" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="19"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="6VL-9K-B4u" eventType="touchUpInside" id="Wzb-Po-KOL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgp-Pk-Ovd">
+                                <frame key="frameInset" minY="232" width="375" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Raleway-ExtraBold" family="Raleway" pointSize="85"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtd-Uu-ZPy">
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
+                                <color key="textColor" red="0.37647058820000001" green="0.73333333329999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-tP-VrO">
+                                <frame key="frameInset" minX="67" minY="136" width="240" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1764705882" green="0.52549019610000003" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dtd-Uu-ZPy" firstAttribute="centerY" secondItem="V3n-KK-9xR" secondAttribute="centerY" id="flM-ju-94M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V3n-KK-9xR" secondAttribute="trailing" id="ioY-pO-QyG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="dtd-Uu-ZPy" secondAttribute="leading" id="jbb-Xy-5mV"/>
+                            <constraint firstItem="V3n-KK-9xR" firstAttribute="top" secondItem="XcU-q7-hYJ" secondAttribute="bottom" constant="8" id="qf5-fM-rBS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomTextView" destination="RIG-RJ-zfC" id="tfs-oM-u1k"/>
+                        <outlet property="countdownLabel" destination="hgp-Pk-Ovd" id="Fry-m3-Z91"/>
+                        <outlet property="difficultyLabel" destination="dtd-Uu-ZPy" id="e1H-aE-ROX"/>
+                        <outlet property="inputAnswerTextField" destination="Aja-jb-5sT" id="R4M-L8-LYf"/>
+                        <outlet property="optionAButton" destination="xio-Pz-mPk" id="PR0-qn-1w3"/>
+                        <outlet property="optionBButton" destination="uV3-5U-hIc" id="sFX-EU-apt"/>
+                        <outlet property="optionCButton" destination="ZmH-4z-qHG" id="Ykl-9i-unx"/>
+                        <outlet property="optionDButton" destination="VFC-4l-tUi" id="EGX-Dn-DsY"/>
+                        <outlet property="submitAnswerButton" destination="17x-cR-ICr" id="dyr-Mr-GW5"/>
+                        <outlet property="timeIndicatorLabel" destination="V3n-KK-9xR" id="qGe-nn-UmX"/>
+                        <outlet property="topImageView" destination="SbO-2H-xDI" id="50v-3P-aFY"/>
+                        <outlet property="topTextView" destination="qAT-tP-VrO" id="YYA-5B-p6L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plw-hX-79S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3820" y="710"/>
+        </scene>
         <!--Type #2-->
         <scene sceneID="xZt-qX-AzC">
             <objects>
@@ -338,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOk-6K-RJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="49"/>
+            <point key="canvasLocation" x="4630" y="-297"/>
         </scene>
         <!--Type #4-->
         <scene sceneID="wcU-3X-3bh">
@@ -403,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWH-5v-PwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5604" y="49"/>
+            <point key="canvasLocation" x="6366" y="-297"/>
         </scene>
         <!--Type #3-->
         <scene sceneID="EJH-FT-vhP">
@@ -506,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLD-iI-ddk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4732" y="49"/>
+            <point key="canvasLocation" x="5494" y="-297"/>
         </scene>
         <!--Login-->
         <scene sceneID="Cij-Y6-OSX">
@@ -669,6 +844,7 @@
                         <outlet property="topLabel" destination="LSV-tr-ETD" id="Lf4-r7-qq8"/>
                         <outlet property="topTable" destination="bIR-0k-oDP" id="lym-Fk-3a8"/>
                         <segue destination="tqe-qQ-D0F" kind="show" identifier="createGroupFromMain" id="X2x-33-9Tn"/>
+                        <segue destination="6VL-9K-B4u" kind="show" identifier="gotomultiplayer" id="hHt-4R-snu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNn-7j-A6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,7 +929,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16L-Ui-3pF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3820" y="1384"/>
+            <point key="canvasLocation" x="3820" y="1476"/>
         </scene>
         <!--Friends-->
         <scene sceneID="kVq-l4-7eW">
@@ -881,7 +1057,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a2f-UL-8fj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xE1-en-2Um">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xE1-en-2Um">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

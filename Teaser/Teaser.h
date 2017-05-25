@@ -37,6 +37,9 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)getGroupMembershipIDFromGroupUIDAndMemberUID:(NSString *)uid withGroupUID:(NSString *)groupUID withCompletion:(completionString)membershipUID;
 +(void)getGroupCurrentProblemUID:(NSString*)groupUID withCompletion:(completionString)problemUID;
 +(void)getGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)groupProblemTimestamp;
++(void)updateGroupCurrentProblem:(NSString*)groupUID withCompletion:(completionString)success;
++(void)updateGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)success;
++(void)updateGroupMemberLastAnsweredTimestamp:(NSString*)uid withGroupUID:(NSString*)groupUID withCompletion:(completionString)success;
 
 //group requests
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid;
@@ -69,6 +72,7 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)getProblemOptionB:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionB;
 +(void)getProblemOptionC:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionC;
 +(void)getProblemOptionD:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionD;
++(void)getProblemDifficultyRating:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)problemDifficulty;
 
 //general functions
 

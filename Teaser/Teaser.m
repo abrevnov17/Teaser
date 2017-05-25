@@ -231,11 +231,12 @@
        completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
            NSData *data = response;
            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-           
            if ([newStr containsString:@"success"]){
                //successfully
                NSArray *components = [newStr componentsSeparatedByString: @":"];
+
                NSString *groupUID = [components objectAtIndex:1];
+
                
                for (NSString *member in members){
                    
@@ -254,6 +255,13 @@
                        NSLog(@"There was a problem adding the admin to the group");
                    }
                }];
+               
+               //now we need to set an initial problem for the group
+               
+               [self updateGroupCurrentProblem:groupUID withCompletion:^(NSString *success){
+                   //we have set an initial problem for the group
+               }];
+
 
                
                
@@ -334,7 +342,7 @@
        completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
            NSData *data = response;
            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-           
+                    
            membershipUID(newStr);
            
        }];
@@ -384,6 +392,82 @@
            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
            
            groupProblemTimestamp(newStr);
+           
+       }];
+}
+
++(void)updateGroupCurrentProblem:(NSString*)groupUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/generateRandomCurrentProblemForGroup.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           success(newStr);
+           
+       }];
+
+}
+
++(void)updateGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/updateGroupTimestamp.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           success(newStr);
+           
+       }];
+    
+
+}
+
++(void)updateGroupMemberLastAnsweredTimestamp:(NSString*)uid withGroupUID:(NSString*)groupUID withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    [data setObject:uid forKey:@"uid"];
+    
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/updateGroupMemberLastAnsweredTimestamp.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           success(newStr);
            
        }];
 }
@@ -453,7 +537,6 @@
            NSData *data = response;
            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
            NSArray *components = [newStr componentsSeparatedByString: @":"];
-           
            for (NSString *string in components){
                if (![string isEqualToString:@""]){
                    [returnValues addObject:string];
@@ -746,6 +829,29 @@
            NSData *data = response;
            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
            problemID(newStr);
+           
+       }];
+
+}
+
++(void)getProblemDifficultyRating:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)problemDifficulty{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemDifficultyRating.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           problemDifficulty(newStr);
            
        }];
 

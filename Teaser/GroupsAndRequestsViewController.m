@@ -23,9 +23,13 @@
 @synthesize topTable;
 @synthesize bottomTable;
 
-//passed in user uid
+//helpful variable to declare so we don't have to keep calling our getCurrentUserID function
 
 NSString *uid;
+
+//below we define a variable that keeps track of the last selected groupUID which is passed into our multiplayer game view controller
+
+NSString *lastSelectedGroupUID;
 
 //initializing data arrays for the table views
 
@@ -39,7 +43,11 @@ NSMutableArray *friendRequestIDS;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //getting our uid
     uid = [Teaser getCurrentUserUID];
+    
+    //initializing lastSelectedGroupUID variable
+    lastSelectedGroupUID = @"";
     
     //setting delegates and datasources for tableviews
     topTable.delegate = self;
@@ -65,7 +73,7 @@ NSMutableArray *friendRequestIDS;
     [Teaser aggregateGroups:uid withCompletion:^(NSMutableArray *groupUIDS){
         
         groupIDS = groupUIDS;
-        
+                
         [Teaser aggregateGroupRequests:uid withCompletion:^(NSMutableArray *requests){
             
             groupRequestIDS = requests;
@@ -437,14 +445,112 @@ NSMutableArray *friendRequestIDS;
     //we get the index of the button that was clicked (we need to know what row it was)
     NSInteger index = sender.tag;
     
+    //setting lastSelectedGroupUID to the groupuid selected
+    
+    lastSelectedGroupUID = [groupIDS objectAtIndex:index];
+    
     //here we need to check when the last
     
-    [Teaser getGroupMembershipIDFromGroupUIDAndMemberUID:uid withGroupUID:[groupIDS objectAtIndex:index] withCompletion:^(NSString *membershipUID){
+    [Teaser getGroupMembershipIDFromGroupUIDAndMemberUID:uid withGroupUID:lastSelectedGroupUID withCompletion:^(NSString *membershipUID){
         //now we have our membershipUID, which we can use to get the timestamp of the last time the user answered a problem in that given group
         
         [Teaser getGroupMemberLastAnsweredTimestamp:membershipUID withCompletion:^(NSString *timestamp){
             //now we have our timestamp, which we need to compare to the timestamp of the current problem to make sure that the user has not answered a problem after the problem's timestamp was set (i.e. make sure they haven't already answered the group's current problem)
             
+            [Teaser getGroupCurrentProblemTimestamp:lastSelectedGroupUID withCompletion:^(NSString *groupProblemTimestamp){
+                /* 
+                 now we have our groupProblemTimestamp. There are a few tasks we need to perform now
+                        1) Make sure that the timestamp (not the groupProblemTimestamp, the other one) is older than the groupProblemTimestamp (ensuring that you have not already played). If it is, continue. If not, give some alert saying you have already done the current problem and need to wait until the current problem expires.
+                        2) Assuming a successful first step, verify that the groupProblemTimestamp is less than a day older than today's date. If yes, continue, otherwise, we need to change the current problem and then continue.
+                        3) Assuming the first two steps went well, we need to transition to the view controller handling the actual game and begin
+                */
+                
+                //we define the below boolean so that we decide whether we want to continue to the transition or cancel for some reason
+                
+                BOOL continueOrNot = YES;
+                
+                //beginning part 1
+                
+                //converting to NSDate and formatting our data
+                
+                NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
+                
+                NSDate *dateTimestamp = [formatter dateFromString:timestamp];
+                NSDate *dateGroupProblemTimestamp = [formatter dateFromString:groupProblemTimestamp];
+                
+                switch ([dateTimestamp compare:dateGroupProblemTimestamp]) {
+                    case NSOrderedAscending:
+                        // we can continue since the dateTimeStamp is earlier in time than the dateGroupProblemTimestamp
+                        break;
+                    case NSOrderedSame:
+                        // this situation is almost impossible, but we will just treat it as the same as the first case
+                        break;
+                    case NSOrderedDescending:
+                        // this is the problem case. we should not continue here
+                        
+                        continueOrNot = NO;
+                    break;
+                }
+                
+                if (continueOrNot){
+                
+                    //beginning part 2
+                    
+                    NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:dateGroupProblemTimestamp];
+                    double secondsInAnHour = 3600;
+                    NSInteger hoursBetweenDates = distanceBetweenDates/secondsInAnHour;
+                    
+                    if (hoursBetweenDates >= 24){
+                        //we need to generate a new problem and then transition to the game view controller
+                        
+                        //generating a new (randomly selected problem)
+                        
+                        [Teaser updateGroupCurrentProblem:lastSelectedGroupUID withCompletion:^(NSString *success){
+                            //updated our current_problem_uid
+                            
+                            [Teaser updateGroupCurrentProblemTimestamp:lastSelectedGroupUID withCompletion:^(NSString *success){
+                                //we have updated the group current problem timestamp
+                                //now we need to transition to the game view
+
+                                [self performSegueWithIdentifier:@"gotomultiplayer" sender:self];
+                            }];
+                            
+                        }];
+                    }
+                    else {
+                        //we transition to the game view controller
+                        
+                        [self performSegueWithIdentifier:@"gotomultiplayer" sender:self];
+
+                    }
+                
+                }
+                
+                else {
+                    //display UIAlertView saying that you have already answered the current problem and need to wait until the next problem cycle
+                    
+                    //first we get the hours until you can play again
+                    
+                    NSTimeInterval distanceBetweenDates = [dateTimestamp timeIntervalSinceDate:dateGroupProblemTimestamp];
+                    double secondsInAnHour = 3600;
+                    NSInteger hoursRemaining = 24 - distanceBetweenDates/secondsInAnHour;
+                    
+                    //simple alertController
+                    
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Have Already Played This Problem"
+                                                                                             message:[NSString stringWithFormat:@"You must wait %ld hours to play again",(long)hoursRemaining]
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    //We add buttons to the alert controller by creating UIAlertActions:
+                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:nil];
+                    [alertController addAction:actionOk];
+                    [self presentViewController:alertController animated:YES completion:nil];
+
+                }
+                
+            }];
             
         }];
         
@@ -520,6 +626,15 @@ NSMutableArray *friendRequestIDS;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"gotomultiplayer"]){
+        //we are about to transition to our multiplayer view
+        //we need to pass the selected groupUID
+        
+        MultiplayerGameViewController *multiplayerViewController = [segue destinationViewController];
+        multiplayerViewController.groupUID = lastSelectedGroupUID;
+    }
+    
     
 }
 
