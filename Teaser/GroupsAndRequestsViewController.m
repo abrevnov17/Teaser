@@ -478,6 +478,10 @@ NSMutableArray *friendRequestIDS;
                 
                 NSDate *dateTimestamp = [formatter dateFromString:timestamp];
                 NSDate *dateGroupProblemTimestamp = [formatter dateFromString:groupProblemTimestamp];
+                NSDate *today = [NSDate date];
+                NSString *currentDateString = [formatter stringFromDate:today];
+                NSDate *currentDate = [formatter dateFromString:currentDateString];
+
                 
                 switch ([dateTimestamp compare:dateGroupProblemTimestamp]) {
                     case NSOrderedAscending:
@@ -488,7 +492,6 @@ NSMutableArray *friendRequestIDS;
                         break;
                     case NSOrderedDescending:
                         // this is the problem case. we should not continue here
-                        
                         continueOrNot = NO;
                     break;
                 }
@@ -497,10 +500,9 @@ NSMutableArray *friendRequestIDS;
                 
                     //beginning part 2
                     
-                    NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:dateGroupProblemTimestamp];
+                    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
                     double secondsInAnHour = 3600;
                     NSInteger hoursBetweenDates = distanceBetweenDates/secondsInAnHour;
-                    
                     if (hoursBetweenDates >= 24){
                         //we need to generate a new problem and then transition to the game view controller
                         
@@ -532,15 +534,14 @@ NSMutableArray *friendRequestIDS;
                     
                     //first we get the hours until you can play again
                     
-                    NSTimeInterval distanceBetweenDates = [dateTimestamp timeIntervalSinceDate:dateGroupProblemTimestamp];
+                    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
                     double secondsInAnHour = 3600;
                     NSInteger hoursRemaining = 24 - distanceBetweenDates/secondsInAnHour;
                     
                     //simple alertController
                     
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Have Already Played This Problem"
-                                                                                             message:[NSString stringWithFormat:@"You must wait %ld hours to play again",(long)hoursRemaining]
-                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Have Already Played This Problem" message:[NSString stringWithFormat:@"You must wait %ld hours to play again",(long)hoursRemaining] preferredStyle:UIAlertControllerStyleAlert];
+                    
                     //We add buttons to the alert controller by creating UIAlertActions:
                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                                        style:UIAlertActionStyleDefault

@@ -40,6 +40,7 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)updateGroupCurrentProblem:(NSString*)groupUID withCompletion:(completionString)success;
 +(void)updateGroupCurrentProblemTimestamp:(NSString*)groupUID withCompletion:(completionString)success;
 +(void)updateGroupMemberLastAnsweredTimestamp:(NSString*)uid withGroupUID:(NSString*)groupUID withCompletion:(completionString)success;
++(void)addToGroupMemberScore:(NSString*)uid withGroupUID:(NSString*)groupUID withScoreToAdd:(NSString *)scoreToAdd withCompletion:(completionString)success;
 
 //group requests
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid;

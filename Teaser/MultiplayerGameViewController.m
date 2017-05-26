@@ -264,6 +264,10 @@ NSString *problem_type;
     self.countdownLabel.hidden = NO;
     self.countdownLabel.text = @"Correct!";
     
+    [Teaser addToGroupMemberScore:uid withGroupUID:groupUID withScoreToAdd:@"10" withCompletion:^(NSString *success){
+        //added 10 to the user group member score
+    }];
+    
 
 }
 

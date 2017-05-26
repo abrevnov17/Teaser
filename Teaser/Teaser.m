@@ -455,7 +455,6 @@
     [data setObject:groupUID forKey:@"group_uid"];
     [data setObject:uid forKey:@"uid"];
     
-    
     SVHTTPClient *request = [SVHTTPClient sharedClient];
     
     [request setBasicAuthWithUsername:nil password:nil];
@@ -470,6 +469,32 @@
            success(newStr);
            
        }];
+}
+
++(void)addToGroupMemberScore:(NSString*)uid withGroupUID:(NSString*)groupUID withScoreToAdd:(NSString *)scoreToAdd withCompletion:(completionString)success{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:groupUID forKey:@"group_uid"];
+    [data setObject:uid forKey:@"uid"];
+    [data setObject:scoreToAdd forKey:@"score_to_add"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/addToGroupMemberScore.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           success(newStr);
+           
+       }];
+    
 }
 
 //group requests
