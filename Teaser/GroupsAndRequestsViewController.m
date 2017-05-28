@@ -481,6 +481,11 @@ NSMutableArray *friendRequestIDS;
                 NSDate *today = [NSDate date];
                 NSString *currentDateString = [formatter stringFromDate:today];
                 NSDate *currentDate = [formatter dateFromString:currentDateString];
+                
+                
+                NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
+                double secondsInAnHour = 3600;
+                NSInteger hoursBetweenDates = distanceBetweenDates/secondsInAnHour;
 
                 
                 switch ([dateTimestamp compare:dateGroupProblemTimestamp]) {
@@ -488,11 +493,18 @@ NSMutableArray *friendRequestIDS;
                         // we can continue since the dateTimeStamp is earlier in time than the dateGroupProblemTimestamp
                         break;
                     case NSOrderedSame:
-                        // this situation is almost impossible, but we will just treat it as the same as the first case
+                        // treating equal same as the first case
                         break;
                     case NSOrderedDescending:
-                        // this is the problem case. we should not continue here
-                        continueOrNot = NO;
+                        // this is the problem case. we should not continue here if the current date is more than a day newer than the dateGroupProblemTimestamp we do continue
+                        
+                        if (hoursBetweenDates >= 24){
+                            continueOrNot = YES;
+                        }
+                        else {
+                            continueOrNot = NO;
+                        }
+                        
                     break;
                 }
                 
@@ -500,9 +512,6 @@ NSMutableArray *friendRequestIDS;
                 
                     //beginning part 2
                     
-                    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
-                    double secondsInAnHour = 3600;
-                    NSInteger hoursBetweenDates = distanceBetweenDates/secondsInAnHour;
                     if (hoursBetweenDates >= 24){
                         //we need to generate a new problem and then transition to the game view controller
                         
@@ -534,9 +543,7 @@ NSMutableArray *friendRequestIDS;
                     
                     //first we get the hours until you can play again
                     
-                    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
-                    double secondsInAnHour = 3600;
-                    NSInteger hoursRemaining = 24 - distanceBetweenDates/secondsInAnHour;
+                    NSInteger hoursRemaining = 24 - hoursBetweenDates;
                     
                     //simple alertController
                     
