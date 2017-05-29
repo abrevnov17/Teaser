@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Teaser.h"
 #import "MultiplayerGameViewController.h"
+#import "GroupPageViewController.h"
 
 @interface GroupsAndRequestsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

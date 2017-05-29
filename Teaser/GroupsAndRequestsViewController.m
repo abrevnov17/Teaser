@@ -67,7 +67,7 @@ NSMutableArray *friendRequestIDS;
 }
 
 -(void)loadData{
-    
+        
     //getting groupIDS
     
     [Teaser aggregateGroups:uid withCompletion:^(NSMutableArray *groupUIDS){
@@ -570,6 +570,15 @@ NSMutableArray *friendRequestIDS;
     
 }
 
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+    //here, we have registered a tap on a row that was not a play button
+    //we want to transition to our group page while passing our groupUID variable in
+    
+    lastSelectedGroupUID = [groupIDS objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"gotogrouppage" sender:self];
+}
+
 -(void)rejectButtonPressed:(UIButton *)sender
 {
     //we get the index of the button that was clicked (we need to know what row it was)
@@ -641,6 +650,14 @@ NSMutableArray *friendRequestIDS;
         
         MultiplayerGameViewController *multiplayerViewController = [segue destinationViewController];
         multiplayerViewController.groupUID = lastSelectedGroupUID;
+    }
+    
+    else if ([segue.identifier isEqualToString:@"gotogrouppage"]){
+        //we are about to transition to our group page view controller
+        //we need to pass the selected groupUID
+        
+        GroupPageViewController *groupPageViewController = [segue destinationViewController];
+        groupPageViewController.groupUID = lastSelectedGroupUID;
     }
     
     

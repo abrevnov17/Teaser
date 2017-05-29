@@ -497,6 +497,30 @@
     
 }
 
++(void)getGroupMemberScore:(NSString*)membershipUID withCompletion:(completionString)memberScore{
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    
+    [data setObject:membershipUID forKey:@"membership_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Groups/getGroupMemberScore.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           
+           memberScore(newStr);
+           
+       }];
+
+}
+
 //group requests
 +(void)getRequestingGroupUserUID:(NSString*)requestUID withCompletion:(completionString)uid{
     //interacting with our REST API

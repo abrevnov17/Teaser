@@ -10,6 +10,7 @@
 		94B4F07E54FE7197CBF4283F /* libPods-Teaser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 400C4E0129AD2E628CC142F5 /* libPods-Teaser.a */; };
 		A8C46D3F3BABD22C00D46E0C /* libPods-TeaserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D14742AFAAF5DA4A9E2E9A82 /* libPods-TeaserTests.a */; };
 		B76686608117E4A4A1768AA1 /* libPods-TeaserUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D61AE7A820F6B16B4C99F37 /* libPods-TeaserUITests.a */; };
+		F235C2E41EDB6A9300A37B57 /* GroupPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F235C2E31EDB6A9300A37B57 /* GroupPageViewController.m */; };
 		F25B9A5C1ECF5C2200B01567 /* PlayForFunGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25B9A5B1ECF5C2200B01567 /* PlayForFunGameViewController.m */; };
 		F27757531ED52B2700FE5217 /* MultiplayerGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27757521ED52B2700FE5217 /* MultiplayerGameViewController.m */; };
 		F27CE6431EBE6B040067938A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27CE6421EBE6B040067938A /* LoginViewController.m */; };
@@ -76,6 +77,8 @@
 		F22484861EBE4AE600985547 /* Raleway-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		F22484871EBE4AE600985547 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		F22484881EBE4AE600985547 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
+		F235C2E21EDB6A9300A37B57 /* GroupPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPageViewController.h; sourceTree = "<group>"; };
+		F235C2E31EDB6A9300A37B57 /* GroupPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPageViewController.m; sourceTree = "<group>"; };
 		F25B9A5A1ECF5C2200B01567 /* PlayForFunGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayForFunGameViewController.h; sourceTree = "<group>"; };
 		F25B9A5B1ECF5C2200B01567 /* PlayForFunGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayForFunGameViewController.m; sourceTree = "<group>"; };
 		F27757511ED52B2700FE5217 /* MultiplayerGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplayerGameViewController.h; sourceTree = "<group>"; };
@@ -198,6 +201,15 @@
 				F22484891EBE4AF800985547 /* Raleway */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		F235C2E51EDB6A9B00A37B57 /* Group Page */ = {
+			isa = PBXGroup;
+			children = (
+				F235C2E21EDB6A9300A37B57 /* GroupPageViewController.h */,
+				F235C2E31EDB6A9300A37B57 /* GroupPageViewController.m */,
+			);
+			name = "Group Page";
 			sourceTree = "<group>";
 		};
 		F254E3361ECB4D0E00F47675 /* Creation Page */ = {
@@ -323,6 +335,7 @@
 			children = (
 				F2A8542C1EC647D500BF2A9A /* Main */,
 				F2A854301EC6487F00BF2A9A /* Create a Group */,
+				F235C2E51EDB6A9B00A37B57 /* Group Page */,
 			);
 			name = "Groups and Requests";
 			sourceTree = "<group>";
@@ -708,6 +721,7 @@
 				F25B9A5C1ECF5C2200B01567 /* PlayForFunGameViewController.m in Sources */,
 				F2945D1F1ECA23F60000C647 /* FriendsListViewController.m in Sources */,
 				F285C9B21EBB9684009BAA97 /* HomeViewController.m in Sources */,
+				F235C2E41EDB6A9300A37B57 /* GroupPageViewController.m in Sources */,
 				F27CE6461EBE6B120067938A /* CreateAccountViewController.m in Sources */,
 				F285C9AF1EBB9684009BAA97 /* AppDelegate.m in Sources */,
 				F27757531ED52B2700FE5217 /* MultiplayerGameViewController.m in Sources */,
