@@ -35,6 +35,8 @@ NSMutableArray *groupMemberUIDS;
     //setting delegates and datasources for tableview
     groupRankedMembersTableView.delegate = self;
     groupRankedMembersTableView.dataSource = self;
+    
+    //we need to set the below boolean to NO so that there isn't a ton of white space above the first cell
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     

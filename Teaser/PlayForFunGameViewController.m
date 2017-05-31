@@ -403,7 +403,7 @@ BOOL isBetweenGames;
     //submit button was pressed
     //checking if answer is correct
     
-    if ([[inputAnswerTextField.text lowercaseString] containsString:correctAnswer]){
+    if ([[inputAnswerTextField.text lowercaseString] isEqualToString:correctAnswer]){
         //correct answer was selected
         
         [self gameWon];
