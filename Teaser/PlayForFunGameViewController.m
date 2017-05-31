@@ -286,6 +286,10 @@ BOOL isBetweenGames;
             //changing difficultyLabel text
             self.difficultyLabel.text = [NSString stringWithFormat:@"Difficulty: %d",difficulty];
         }
+        
+        //we reset the streak variable
+        
+        streak = 0;
     }
     
     //setting our boolean to keep track of our state so the function called by the gesture recognizer will work
