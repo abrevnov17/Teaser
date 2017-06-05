@@ -38,7 +38,7 @@
     
     //first we check if the password/confirm password fields contain the same text
     
-    if (confirmPasswordTextField.text == passwordTextField.text){
+    if ([confirmPasswordTextField.text isEqual:passwordTextField.text]){
         
         //next we create a new user using our REST API
     
