@@ -475,15 +475,13 @@ NSMutableArray *friendRequestIDS;
                 
                 NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
                 [formatter setDateFormat:@"yyyy-mm-dd HH:mm:ss"];
+            
                 
                 NSDate *dateTimestamp = [formatter dateFromString:timestamp];
                 NSDate *dateGroupProblemTimestamp = [formatter dateFromString:groupProblemTimestamp];
                 NSDate *today = [NSDate date];
-                NSString *currentDateString = [formatter stringFromDate:today];
-                NSDate *currentDate = [formatter dateFromString:currentDateString];
                 
-                
-                NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateGroupProblemTimestamp];
+                NSTimeInterval distanceBetweenDates = [today timeIntervalSinceDate:dateGroupProblemTimestamp];
                 double secondsInAnHour = 3600;
                 NSInteger hoursBetweenDates = distanceBetweenDates/secondsInAnHour;
 
@@ -544,7 +542,7 @@ NSMutableArray *friendRequestIDS;
                     //first we get the hours until you can play again
                     
                     NSInteger hoursRemaining = 24 - hoursBetweenDates;
-                    
+ 
                     //simple alertController
                     
                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Have Already Played This Problem" message:[NSString stringWithFormat:@"You must wait %ld hours to play again",(long)hoursRemaining] preferredStyle:UIAlertControllerStyleAlert];

@@ -1083,6 +1083,43 @@
        }];
 }
 
++(void)getProblemHeaderImage:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionImage)headerImage{
+    //first we need to get the url of the image
+    
+    //interacting with our REST API
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [data setObject:uid forKey:@"user_uid"];
+    [data setObject:problemID forKey:@"problem_uid"];
+    
+    SVHTTPClient *request = [SVHTTPClient sharedClient];
+    
+    [request setBasicAuthWithUsername:nil password:nil];
+    [request setSendParametersAsJSON:NO];
+    
+    [request POST:@"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problems/getProblemHeaderImageURL.php"
+       parameters:data
+       completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
+           NSData *data = response;
+           NSString* urlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+           //now that we have gotten our url, we need to convert it to a UIImage
+           
+           //getting the string url of the path to our image
+           NSString *baseURLString = @"https://csweb.sidwell.edu/~student/abrevnov17/Teaser/Problem%20Images/";
+           NSString *completeURLString = [baseURLString stringByAppendingString:urlString];
+           
+           //converting to url and then converting to data and then converting to our desire uiimage
+           NSURL *url = [NSURL URLWithString:completeURLString];
+           NSData *imageData = [NSData dataWithContentsOfURL : url];
+           UIImage *image = [UIImage imageWithData: imageData];
+           
+           //returning our headerImage using our completion block:
+           
+           headerImage(image);
+           
+       }];
+}
+
 /* USER FUNCTIONS */
 
 +(BOOL)isUserLoggedIn{
@@ -1106,6 +1143,16 @@
     NSString *uid = [FDKeychain itemForKey: @"uid" forService: @"Teaser" error: &error];
     
     return uid;
+}
+
++(void)logOutCurrentUser{
+    //deleting keychain value
+    
+    NSError *error = nil;
+    
+    [FDKeychain deleteItemForKey:@"uid" forService:@"Teaser" error:&error];
+    
+    
 }
 
 

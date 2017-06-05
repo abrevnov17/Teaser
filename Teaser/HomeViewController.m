@@ -26,9 +26,15 @@
     }
     
     //user is logged in
-    
-    
+}
 
+-(IBAction)logOut:(id)sender{
+    //in this touch-event we are going to both log the user out and transition to the authentication view controllers
+    
+    [Teaser logOutCurrentUser];
+    
+    [self performSegueWithIdentifier:@"authentication" sender:self];
+    
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "SVHTTPRequest.h"
 #import "FDKeychain.h"
 
@@ -17,6 +18,7 @@ static @interface Teaser : NSObject
 //creating our completion blocks
 typedef void(^completionString)(NSString *);
 typedef void(^completionNSMutableArray)(NSMutableArray *);
+typedef void(^completionImage)(UIImage *);
 
 
 //users
@@ -75,6 +77,8 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 +(void)getProblemOptionC:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionC;
 +(void)getProblemOptionD:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)optionD;
 +(void)getProblemDifficultyRating:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionString)problemDifficulty;
++(void)getProblemHeaderImage:(NSString*)uid withProblemID:(NSString*)problemID withCompletion:(completionImage)headerImage;
+
 
 //general functions
 
@@ -84,5 +88,6 @@ typedef void(^completionNSMutableArray)(NSMutableArray *);
 
 +(BOOL)isUserLoggedIn;
 +(NSString *)getCurrentUserUID;
++(void)logOutCurrentUser;
 
 @end

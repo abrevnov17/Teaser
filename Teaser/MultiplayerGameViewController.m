@@ -158,8 +158,15 @@ NSString *problem_type;
             //now we have to populate the views
             
             if ([problemType isEqualToString:@"image_text_options"] || [problemType isEqualToString:@"image_text_choice"]){
-                //getting the image -> STILL NEEDS TO BE DONE!!! (first need to update the REST API and then the wrapper before adding it here)
+                //getting the image using our wrapper function
                 
+                [Teaser getProblemHeaderImage:uid withProblemID:problem_uid withCompletion:^(UIImage *headerImage){
+                    //we have successfully gotten our image, so now we set the uiimageview's image to be the retrieved headerImage
+                    
+                    [self.topImageView setImage:headerImage];
+                    
+                }];
+            
             }
             
             else {

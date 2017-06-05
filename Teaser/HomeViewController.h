@@ -12,5 +12,7 @@
 @interface HomeViewController : UIViewController
 
 
+-(IBAction)logOut:(id)sender;
+
 @end
 

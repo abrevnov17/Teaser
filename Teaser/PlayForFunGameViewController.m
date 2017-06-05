@@ -141,6 +141,7 @@ BOOL isBetweenGames;
     
     [Teaser getProblemIDForDifficulty:uid withDifficulty:difficultyAsAString withCompletion:^(NSString *problem_uid){
         //now that we have our problem_uid, we need to get the problem_type
+        
         [Teaser getProblemType:uid withProblemID:problem_uid withCompletion:^(NSString *problemType){
             //we have our problem type, now we need to hide our unhide certain views depending on the type of problem
             
@@ -163,7 +164,14 @@ BOOL isBetweenGames;
             //now we have to populate the views
             
             if ([problemType isEqualToString:@"image_text_options"] || [problemType isEqualToString:@"image_text_choice"]){
-                //getting the image -> STILL NEEDS TO BE DONE!!! (first need to update the REST API and then the wrapper before adding it here)
+                //getting the image using our wrapper function
+                
+                [Teaser getProblemHeaderImage:uid withProblemID:problem_uid withCompletion:^(UIImage *headerImage){
+                    //we have successfully gotten our image, so now we set the uiimageview's image to be the retrieved headerImage
+                    
+                    [self.topImageView setImage:headerImage];
+                    
+                }];
                 
             }
             
