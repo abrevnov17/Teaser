@@ -81,6 +81,7 @@ NSMutableArray *friendRequestIDS;
             [Teaser aggregateFriends:uid withCompletion:^(NSMutableArray *friends){
                
                 friendIDS = friends;
+
                 
                 [Teaser aggregateFriendRequests:uid withCompletion:^(NSMutableArray *requests){
                    
@@ -240,6 +241,7 @@ NSMutableArray *friendRequestIDS;
     }
     
     if (segmentedController.selectedSegmentIndex == 0){
+        NSLog(@"orange");
         //groups view controller
         
         if (tableView1 == topTable){
@@ -325,10 +327,11 @@ NSMutableArray *friendRequestIDS;
     
     else {
         //friends controller
-        
+        NSLog(@"alpha");
         if (tableView1 == topTable){
             //top table in friends view controller
-            
+            NSLog(@"beta");
+
             //getting friend name from id
             
             [Teaser getUsername:[friendIDS objectAtIndex:indexPath.row] withCompletion:^(NSString *username){
@@ -338,6 +341,8 @@ NSMutableArray *friendRequestIDS;
             
         }
         else {
+            NSLog(@"kappa");
+
             //bottom table in friends view controller
 
             //defining our friendRequestID
@@ -347,7 +352,7 @@ NSMutableArray *friendRequestIDS;
             //getting the userid from the friendRequestID, which we then use to get information used in labels/buttons contained within the cell
             
             [Teaser getRequestingFriendUserUID:friendRequestID withCompletion:^(NSString *uid){
-                
+                NSLog(@"%@",uid);
                 //set the title text by retrieving the friend name
                 [Teaser getUsername:uid withCompletion:^(NSString *name){
                     cell.textLabel.text = name;

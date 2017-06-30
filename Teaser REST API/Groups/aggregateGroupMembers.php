@@ -12,7 +12,7 @@
 		$group_uid = $_POST["group_uid"];
 	
 		//querying data based on information
-		$query = mysqli_query($dbc,"SELECT member_uid FROM `Group Members` WHERE group_uid = '$group_uid' LIMIT 0, 31");
+		$query = mysqli_query($dbc,"SELECT member_uid FROM `Group Members` WHERE group_uid = '$group_uid' ORDER BY member_score DESC LIMIT 0, 31");
 
 		$num_rows = mysqli_num_rows($query);
 

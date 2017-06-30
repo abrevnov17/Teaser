@@ -12,15 +12,15 @@
 		//setting variable values from POST
 
 		$user_uid = $_POST["user_uid"];
-		$difficulty = $_POST["difficulty"];
+		$problem_uid = $_POST["problem_uid"];
 	
 		//querying data based on information
-		$query = mysqli_query($dbc,"SELECT problem_uid FROM Problems WHERE difficulty_rating = '$difficulty' ORDER BY RAND() LIMIT 0, 1");
+		$query = mysqli_query($dbc,"SELECT header_image_path FROM Problems WHERE problem_uid = '$problem_uid' LIMIT 0, 1");
 
 		$row = mysqli_fetch_array($query, MYSQLI_NUM);
-		$problem_uid= $row[0];
+		$header_image_path= $row[0];
 
-		echo $problem_uid;
+		echo $header_image_path;
 
 
 	}

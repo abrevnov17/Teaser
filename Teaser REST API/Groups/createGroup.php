@@ -1,4 +1,4 @@
-d<?php
+<?php
 	//this is our php file to create a group
 
 	//connecting to database
@@ -16,9 +16,16 @@ d<?php
 		$number_of_members = $_POST["number_of_members"];
 		$description = $_POST["description"];
 		$admin_uid = $_POST["admin_uid"];
+
+		//getting a random problem
+
+		$query = mysqli_query($dbc,"SELECT problem_uid FROM Problems ORDER BY RAND() LIMIT 0, 1");
+
+		$row = mysqli_fetch_array($query, MYSQLI_NUM);
+		$problem_uid= $row[0];
 	
 		//adding the group to the Groups database
-		$query = mysqli_query($dbc,"INSERT INTO `Groups` (group_name, number_of_members, description, admin_uid) VALUES ('$group_name', '$number_of_members', '$description', '$admin_uid')");
+		$query = mysqli_query($dbc,"INSERT INTO `Groups` (group_name, number_of_members, description, admin_uid, current_problem_uid) VALUES ('$group_name', '$number_of_members', '$description', '$admin_uid', '$problem_uid')");
 
 		//we also need to return the group uid which we need in our wrapper to immediately add members to the group
 		$query = mysqli_query($dbc,"SELECT LAST_INSERT_ID();");

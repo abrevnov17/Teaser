@@ -82,7 +82,7 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                              bundle: nil];
     
-    FriendsListViewController *friendsController = (FriendsListViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"myFriends"];
+    FriendsListViewController *friendsController = (FriendsListViewController *)[mainStoryboard instantiateViewControllerWithIdentifier: @"myfriends"];
     //setting our delegate
     friendsController.delegate = self;
     [self.navigationController pushViewController:friendsController animated:YES];

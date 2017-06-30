@@ -12,18 +12,17 @@
 
 		//setting variable values from POST
 
+		$uid = $_POST["uid"];
 		$group_uid = $_POST["group_uid"];
-		$member_uid = $_POST["member_uid"];
-	
-		//adding the group to the Groups database
-		$query = mysqli_query($dbc,"INSERT INTO `Group Members` (group_uid, member_uid) VALUES ('$group_uid', '$member_uid')");
 
-		if ($query){
-			echo "success";
-		}
-		else {
-			echo "Invalid name or number of members";
-		}
+		$query = mysqli_query($dbc,"SELECT membership_uid FROM `Group Members` where member_uid = '$uid' AND group_uid = '$group_uid' LIMIT 0, 1");
+
+		$row = mysqli_fetch_array($query, MYSQLI_NUM);
+		$membership_uid = $row[0];
+
+		//echoing out the membership_uid
+
+		echo $membership_uid;
 
 	}
 

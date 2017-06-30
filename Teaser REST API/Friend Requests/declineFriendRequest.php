@@ -1,6 +1,5 @@
 <?php
-	//this is our php file to create a group
-
+	
 	//connecting to database
 	$dbc= mysqli_connect("localhost", "abrevnov17", "abrevnov171234", "abrevnov17");
 	if(!$dbc){ // there was an error connecting
@@ -12,18 +11,21 @@
 
 		//setting variable values from POST
 
-		$group_uid = $_POST["group_uid"];
-		$member_uid = $_POST["member_uid"];
+		$request_uid= $_POST["request_uid"];
 	
-		//adding the group to the Groups database
-		$query = mysqli_query($dbc,"INSERT INTO `Group Members` (group_uid, member_uid) VALUES ('$group_uid', '$member_uid')");
+		//deleting row from Friend Requests table where the request_uid field matches our inputted request_uid
+		$query = mysqli_query($dbc,"DELETE FROM `Friend Requests` WHERE request_uid = '$request_uid'");
 
 		if ($query){
+
 			echo "success";
 		}
+
 		else {
-			echo "Invalid name or number of members";
+
+			echo "failure";
 		}
+
 
 	}
 
